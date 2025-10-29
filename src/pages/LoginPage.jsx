@@ -49,6 +49,9 @@ function LoginPage() {
     setLoading(true);
     
     try {
+      const loginUrl = `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`;
+      console.log("Attempting to fetch:", loginUrl);
+
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
