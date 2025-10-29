@@ -55,6 +55,8 @@ import {
     Edit as EditIcon
 } from '@mui/icons-material';
 
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
 // --- Komponen AddJobForm (Dipercantik) ---
 function AddJobForm({ refreshJobs, companyProfileExists }) {
   const [title, setTitle] = useState('');
@@ -74,7 +76,7 @@ function AddJobForm({ refreshJobs, companyProfileExists }) {
     setError('');
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3001/api/jobs', {
+      const response = await fetch(`${apiUrl}/api/jobs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -198,7 +200,7 @@ function EditCompanyProfileForm({ initialProfile, onProfileUpdate }) {
     setSuccess('');
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:3001/api/profile', {
+      const response = await fetch(`${apiUrl}/api/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -306,7 +308,7 @@ function DashboardRecruiter() {
     setErrorProfile('');
     setLoadingProfile(true);
     try {
-      const response = await fetch('http://localhost:3001/api/profile', {
+      const response = await fetch(`${apiUrl}/api/profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil profil perusahaan');
@@ -324,7 +326,7 @@ function DashboardRecruiter() {
     setErrorJobs('');
     setLoadingJobs(true); 
     try {
-      const response = await fetch('http://localhost:3001/api/jobs/my-company', {
+      const response = await fetch(`${apiUrl}/api/jobs/my-company`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil lowongan saya');
@@ -358,7 +360,7 @@ function DashboardRecruiter() {
     setApplicants([]);
 
     try {
-      const response = await fetch(`http://localhost:3001/api/applications/recruiter/${jobId}`, {
+      const response = await fetch(`${apiUrl}/api/applications/recruiter/${jobId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!response.ok) throw new Error('Gagal mengambil data pelamar');

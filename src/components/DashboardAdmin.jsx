@@ -32,6 +32,8 @@ function DashboardAdmin() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
   const fetchReviewApps = async (isRefresh = false) => {
     if (isRefresh) {
       setRefreshing(true);
@@ -41,7 +43,7 @@ function DashboardAdmin() {
     setError('');
     
     try {
-      const response = await fetch('http://localhost:3001/api/applications/admin', { 
+      const response = await fetch(`${apiUrl}/api/applications/admin`, { 
         headers: { 'Authorization': `Bearer ${token}` } 
       });
       if (!response.ok) throw new Error('Gagal mengambil data review');
