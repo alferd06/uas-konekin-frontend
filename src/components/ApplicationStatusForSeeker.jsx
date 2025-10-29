@@ -38,7 +38,7 @@ function ApplicationStatusForSeeker() {
     setError('');
     
     try {
-      const response = await fetch(`http://localhost:3001/api/applications/seeker`, { 
+      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/applications/seeker`, { 
         headers: { 'Authorization': `Bearer ${token}` } 
       });
       if (!response.ok) throw new Error('Gagal mengambil data lamaran');

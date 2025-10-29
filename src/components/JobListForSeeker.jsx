@@ -44,7 +44,7 @@ function JobListForSeeker() {
       setError('');
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3001/api/jobs`, {
+        const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/jobs`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         // --- LOG #5: Cek status ---
@@ -87,7 +87,7 @@ function JobListForSeeker() {
     setApplyingJobId(jobId); 
 
     try {
-      const response = await fetch(`http://localhost:3001/api/jobs/${jobId}/apply`, {
+      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/jobs/${jobId}/apply`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -52,7 +52,7 @@ function LoginPage() {
       const loginUrl = `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`;
       console.log("Attempting to fetch:", loginUrl);
 
-      const response = await fetch(`http://localhost:3001/api/auth/login`, {
+      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

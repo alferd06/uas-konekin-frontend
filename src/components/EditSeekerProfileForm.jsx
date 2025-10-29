@@ -37,7 +37,7 @@ function EditSeekerProfileForm() {
       setLoadingProfile(true);
       setError('');
       try {
-        const response = await fetch(`http://localhost:3001/api/profile`, { // Ganti URL jika perlu
+        const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/profile`, { // Ganti URL jika perlu
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) throw new Error('Gagal memuat profil');
@@ -86,7 +86,7 @@ function EditSeekerProfileForm() {
     // ----------------------
 
     try {
-      const response = await fetch(`http://localhost:3001/api/profile`, { // Ganti URL jika perlu
+      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/profile`, { // Ganti URL jika perlu
         method: 'PUT',
         headers: {
           // JANGAN set 'Content-Type', browser akan otomatis mengaturnya untuk FormData
@@ -165,7 +165,7 @@ function EditSeekerProfileForm() {
           {currentResumeFilename && !selectedFile && (
              <Typography variant="body2" sx={{ mb: 1 }}>
                Resume saat ini: {' '}
-               <MuiLink href={`http://localhost:3001/api/resumes/${currentResumeFilename}`} target="_blank" rel="noopener noreferrer"> {/* Ganti URL jika perlu */}
+               <MuiLink href={`https://uas-konekin-backend-production.up.railway.app/api/resumes/${currentResumeFilename}`} target="_blank" rel="noopener noreferrer"> {/* Ganti URL jika perlu */}
                  {currentResumeFilename}
                </MuiLink>
             </Typography>
