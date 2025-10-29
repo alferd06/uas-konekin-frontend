@@ -5,6 +5,8 @@ const getTokenFromStorage = () => localStorage.getItem('authToken');
 
 const AuthContext = createContext(null);
 
+const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(getTokenFromStorage()); 
   const [user, setUser] = useState(null);
@@ -17,7 +19,7 @@ export function AuthProvider({ children }) {
       if (token) {
         try {
           setError(null);
-          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/me`, {
+          const response = await fetch(`${apiUrl}/api/auth/me`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           
