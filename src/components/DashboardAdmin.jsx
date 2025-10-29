@@ -62,7 +62,7 @@ function DashboardAdmin() {
 
   const handleFinalize = async (appId, newStatus, appData) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/applications/${appId}/finalize`, {
+      const response = await fetch(`http://localhost:3001/api/applications/${appId}/finalize`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json', 

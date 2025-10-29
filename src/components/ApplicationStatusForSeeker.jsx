@@ -38,7 +38,7 @@ function ApplicationStatusForSeeker() {
     setError('');
     
     try {
-      const response = await fetch('http://localhost:3001/api/applications/seeker', { 
+      const response = await fetch(`http://localhost:3001/api/applications/seeker`, { 
         headers: { 'Authorization': `Bearer ${token}` } 
       });
       if (!response.ok) throw new Error('Gagal mengambil data lamaran');
@@ -213,7 +213,6 @@ function ApplicationStatusForSeeker() {
         flexWrap: 'wrap',
         gap: 2
       }}>
-        
         
         <Tooltip title="Refresh status">
           <IconButton 
