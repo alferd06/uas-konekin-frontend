@@ -389,7 +389,7 @@ function DashboardRecruiter() {
 
   async function handleReview(applicationId, newStatus) {
     try {
-      const response = await fetch(`http://localhost:3001/api/applications/${applicationId}/review`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/applications/${applicationId}/review`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

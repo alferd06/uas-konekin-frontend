@@ -43,7 +43,7 @@ function JobListForSeeker() {
       setError('');
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:3001/api/jobs', {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/jobs`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         // --- LOG #5: Cek status ---
