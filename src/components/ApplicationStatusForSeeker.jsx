@@ -38,7 +38,7 @@ function ApplicationStatusForSeeker() {
     setError('');
     
     try {
-      const response = await fetch(`http://localhost:3001/api/applications/seeker`, { 
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/applications/seeker`, { 
         headers: { 'Authorization': `Bearer ${token}` } 
       });
       if (!response.ok) throw new Error('Gagal mengambil data lamaran');
