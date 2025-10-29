@@ -43,7 +43,7 @@ function DashboardAdmin() {
     setError('');
     
     try {
-      const response = await fetch(`${apiUrl}/api/applications/admin`, { 
+      const response = await fetch(`http://localhost:3001/api/applications/admin`, { 
         headers: { 'Authorization': `Bearer ${token}` } 
       });
       if (!response.ok) throw new Error('Gagal mengambil data review');
@@ -64,7 +64,7 @@ function DashboardAdmin() {
 
   const handleFinalize = async (appId, newStatus, appData) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/applications/${appId}/finalize`, {
+      const response = await fetch(`http://localhost:3001/api/applications/${appId}/finalize`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json', 
@@ -285,7 +285,7 @@ function DashboardAdmin() {
             <Typography variant="h3" color="secondary.main" fontWeight="bold">
               {reviewApps.length}
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
+            <Typography variant="body2" color="text.primary" sx={{ fontWeight: 500 }}>
               Total Menunggu Review
             </Typography>
           </Card>

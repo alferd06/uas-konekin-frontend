@@ -9,7 +9,8 @@ import {
   CardHeader,
   Avatar,
   Chip,
-  Alert
+  Alert,
+  Divider
 } from '@mui/material';
 import {
   Work as WorkIcon,
@@ -23,6 +24,7 @@ import JobListForSeeker from '../components/JobListForSeeker';
 import ApplicationStatusForSeeker from '../components/ApplicationStatusForSeeker';
 import DashboardRecruiter from '../components/DashboardRecruiter';
 import DashboardAdmin from '../components/DashboardAdmin';
+import EditSeekerProfileForm from '../components/EditSeekerProfileForm';
 
 function DashboardPage() {
   const { user } = useAuth();
@@ -116,6 +118,10 @@ function DashboardPage() {
         <Grid container spacing={3}>
           {user.role === 'seeker' && (
             <Grid item xs={12}>
+              {/* --- TAMBAHKAN FORM EDIT PROFIL DI SINI --- */}
+              <EditSeekerProfileForm />
+              <Divider sx={{ my: 4 }} /> 
+              {/* ------------------------------------------- */}
               <Card elevation={3} sx={{ mb: 3, width: '100%' }}> 
                 <CardHeader
                   title={
@@ -174,19 +180,7 @@ function DashboardPage() {
           {user.role === 'admin' && (
             <Grid item xs={12}>
               <Card elevation={3} sx={{ width: '100%' }}>
-                <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: 'error.main' }}>
-                      <AdminIcon />
-                    </Avatar>
-                  }
-                  title={
-                    <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
-                      Dashboard Administrator
-                    </Typography>
-                  }
-                  subheader="Kelola seluruh sistem dan pengguna"
-                />
+                <CardHeader />
                 <CardContent sx={{ width: '100%' }}>
                   <DashboardAdmin />
                 </CardContent>
