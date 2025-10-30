@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../config';
 // --- Impor MUI ---
 import {
     Box, Typography, CircularProgress, Alert,
@@ -38,7 +39,7 @@ function ApplicationStatusForSeeker() {
     setError('');
     
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/applications/seeker`, { 
+      const response = await fetch(`${API_BASE_URL}/api/applications/seeker`, { 
         headers: { 'Authorization': `Bearer ${token}` } 
       });
       if (!response.ok) throw new Error('Gagal mengambil data lamaran');

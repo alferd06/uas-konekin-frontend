@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 
 // Helper function to get token from localStorage
 const getTokenFromStorage = () => localStorage.getItem('authToken');
@@ -21,7 +22,7 @@ export function AuthProvider({ children }) {
       if (token) {
         try {
           setError(null);
-          const response = await fetch(`http://localhost:3001/api/auth/me`, {
+          const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           

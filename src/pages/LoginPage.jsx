@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 // --- Impor Komponen MUI ---
 import { 
@@ -49,10 +50,11 @@ function LoginPage() {
     setLoading(true);
     
     try {
-      const loginUrl = `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`;
+      const loginUrl1 = `${import.meta.env.VITE_API_BASE_URL}/api/auth/login`;
+      const loginUrl = `${API_BASE_URL}/api/auth/login`;
       console.log("Attempting to fetch:", loginUrl);
 
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/auth/login`, {
+      const response = await fetch(loginUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

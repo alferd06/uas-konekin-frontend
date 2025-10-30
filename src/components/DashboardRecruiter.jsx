@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../config';
 import {
     Box, Typography, TextField, Button, CircularProgress, Alert,
     List, ListItem, ListItemText, Divider, Paper, Table, TableBody,
@@ -39,7 +40,7 @@ function AddJobForm({ refreshJobs, companyProfileExists }) {
     }
     setError(''); setLoading(true);
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/jobs`, { // Gunakan apiUrl
+      const response = await fetch(`${API_BASE_URL}/api/jobs`, { // Gunakan apiUrl
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ title, description, location: jobLocation, salary_range: salaryRange })
@@ -90,7 +91,7 @@ function EditCompanyProfileForm({ initialProfile, onProfileUpdate }) {
     e.preventDefault();
     setError(''); setSuccess(''); setLoading(true);
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/profile`, { // Gunakan apiUrl
+      const response = await fetch(`${API_BASE_URL}/api/profile`, { // Gunakan apiUrl
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ company_name: companyName, company_description: description, company_website: website })
@@ -146,7 +147,7 @@ function DashboardRecruiter() {
   async function fetchCompanyProfile() {
     setErrorProfile(''); setLoadingProfile(true);
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/profile`, { headers: { 'Authorization': `Bearer ${token}` } });
+      const response = await fetch(`${API_BASE_URL}/api/profile`, { headers: { 'Authorization': `Bearer ${token}` } });
       if (!response.ok) throw new Error('Gagal mengambil profil perusahaan');
       const data = await response.json();
       setCompanyProfile(data);
@@ -158,7 +159,7 @@ function DashboardRecruiter() {
     setErrorJobs('');
     if (showLoading) setLoadingJobs(true); // Hanya set loading jika diminta
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/jobs/my-company`, { headers: { 'Authorization': `Bearer ${token}` } });
+      const response = await fetch(`${API_BASE_URL}/api/jobs/my-company`, { headers: { 'Authorization': `Bearer ${token}` } });
       if (!response.ok) throw new Error('Gagal mengambil lowongan saya');
       const data = await response.json();
       setMyJobs(data);
@@ -183,7 +184,7 @@ function DashboardRecruiter() {
     if (!jobId) return;
     setErrorApplicants(''); setLoadingApplicants(true); setApplicants([]);
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/applications/recruiter/${jobId}`, { headers: { 'Authorization': `Bearer ${token}` } });
+      const response = await fetch(`${API_BASE_URL}/api/applications/recruiter/${jobId}`, { headers: { 'Authorization': `Bearer ${token}` } });
       if (!response.ok) throw new Error('Gagal mengambil data pelamar');
       const data = await response.json();
       setApplicants(data);
@@ -203,7 +204,7 @@ function DashboardRecruiter() {
     // Tambahkan state loading khusus dialog
     setReviewDialog(prev => ({ ...prev, loading: true }));
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/applications/${applicationId}/review`, {
+      const response = await fetch(`${API_BASE_URL}/api/applications/${applicationId}/review`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ new_status: newStatus })
@@ -339,7 +340,7 @@ function DashboardRecruiter() {
                                         <TableCell>
                                             {applicant.resume_filename ? (
                                                 <Tooltip title="Lihat CV">
-                                                    <IconButton size="small" href={`https://uas-konekin-backend-production.up.railway.app/api/resumes/${applicant.resume_filename}`} target="_blank" rel="noopener noreferrer"> <ResumeIcon /> </IconButton>
+                                                    <IconButton size="small" href={`${API_BASE_URL}/api/resumes/${applicant.resume_filename}`} target="_blank" rel="noopener noreferrer"> <ResumeIcon /> </IconButton>
                                                 </Tooltip>
                                             ) : '-'}
                                         </TableCell>

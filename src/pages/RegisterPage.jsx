@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 // --- Impor MUI ---
 import {
@@ -40,7 +41,7 @@ function RegisterPage() {
     setLoading(true);
     
     try {
-      const response = await fetch(`https://uas-konekin-backend-production.up.railway.app/api/auth/register`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ full_name: fullName, email, password, role }),
