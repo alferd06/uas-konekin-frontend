@@ -175,7 +175,7 @@ function DashboardRecruiter() {
   }, [token]);
 
   const handleProfileUpdate = (updatedProfile) => {
-    setCompanyProfile(updatedProfile);
+    fetchCompanyProfile();
   };
 
   const companyProfileExists = !!companyProfile?.company_id;
