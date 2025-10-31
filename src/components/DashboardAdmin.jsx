@@ -334,7 +334,7 @@ function DashboardAdmin() {
           }}
         >
           <CardContent>
-            <CheckCircle sx={{ fontSize: 64, color: 'success.main', mb: 2 }} />
+            <ApproveIcon sx={{ fontSize: 64, color: 'success.main', mb: 2 }} />
             <Typography variant="h5" color="text.secondary" gutterBottom>
               Tidak Ada Lamaran Menunggu
             </Typography>
