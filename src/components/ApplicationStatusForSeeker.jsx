@@ -17,8 +17,7 @@ import {
     Refresh as RefreshIcon,
     Work as WorkIcon,
     Business as BusinessIcon,
-    Schedule as ScheduleIcon,
-    CheckCircle as AcceptedIcon
+    Schedule as ScheduleIcon
 } from '@mui/icons-material';
 // -----------------
 
