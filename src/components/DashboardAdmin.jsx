@@ -20,7 +20,7 @@ import {
     Refresh as RefreshIcon,
     AdminPanelSettings as AdminIcon,
     Warning as WarningIcon,
-    CheckCircle as AcceptedIcon,
+    CheckCircle as AcceptedIcon
 } from '@mui/icons-material';
 // -----------------
 
